@@ -31,14 +31,6 @@
         <button type="button" onclick="calculateByTime()">Oblicz</button>
     </form>
     <div id="timeResults"></div>
-    
-    <h2>Opcja 2: Pieniądze</h2>
-    <form id="moneyForm">
-        <label for="budget">Dostępne pieniądze ($): </label>
-        <input type="number" id="budget" name="budget" min="1">
-        <button type="button" onclick="calculateByMoney()">Oblicz</button>
-    </form>
-    <div id="moneyResults"></div>
 
     <script>
         const powerUps = [
@@ -74,23 +66,6 @@
 
             results += `<tr><td colspan="2">Łączny koszt</td><td>${totalCost}</td></tr></table>`;
             document.getElementById('timeResults').innerHTML = results;
-        }
-
-        function calculateByMoney() {
-            const budget = parseFloat(document.getElementById('budget').value);
-            let results = '<h3>Wyniki dla dostępnych pieniędzy:</h3><table border="1"><tr><th>Nazwa</th><th>Ilość</th><th>Łączny czas (minuty)</th></tr>';
-            let remainingBudget = budget;
-
-            powerUps.forEach(powerUp => {
-                const quantity = Math.floor(remainingBudget / powerUp.cost);
-                const totalTime = quantity * powerUp.duration;
-                remainingBudget -= quantity * powerUp.cost;
-
-                results += `<tr><td>${powerUp.name}</td><td>${quantity}</td><td>${totalTime}</td></tr>`;
-            });
-
-            results += `<tr><td colspan="2">Pozostały budżet</td><td>${remainingBudget}</td></tr></table>`;
-            document.getElementById('moneyResults').innerHTML = results;
         }
     </script>
 </body>
