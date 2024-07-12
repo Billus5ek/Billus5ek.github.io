@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym League Power-Up Calculator</title>
+</head>
+<body>
+    
+    <!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gym League Power-Up Kalkulator</title>
+</head>
+<body>
+    <h1>Gym League Power-Up Kalkulator</h1>
+    <h2>Opis Power-Upów</h2>
+    <table border="1">
+        <tr>
+            <th>Nazwa</th>
+            <th>Czas trwania</th>
+            <th>Koszt ($)</th>
+        </tr>
+        <!-- Wprowadź dane power-upów tutaj -->
+    </table>
+    <h2>Opcja 1: Czas Treningu</h2>
+    <form id="timeForm">
+        <label for="trainingTime">Czas treningu (w godzinach): </label>
+        <input type="number" id="trainingTime" name="trainingTime" min="1">
+        <button type="button" onclick="calculateByTime()">Oblicz</button>
+    </form>
+    <div id="timeResults"></div>
+    
+    <h2>Opcja 2: Pieniądze</h2>
+    <form id="moneyForm">
+        <label for="budget">Dostępne pieniądze ($): </label>
+        <input type="number" id="budget" name="budget" min="1">
+        <button type="button" onclick="calculateByMoney()">Oblicz</button>
+    </form>
+    <div id="moneyResults"></div>
+
+    <script>
+        const powerUps = [
+            {name: 'Chocolate Bar', duration: 1, cost: 50},
+            {name: 'Chips', duration: 1.5, cost: 90},
+            {name: 'Chicken Wings', duration: 2, cost: 112},
+            {name: 'Master Drink', duration: 2, cost: 127},
+            {name: 'Protein bar', duration: 3, cost: 150},
+            {name: 'Cheap protein powder', duration: 5, cost: 180},
+            {name: 'Steak', duration: 4, cost: 210},
+            {name: 'Rorate', duration: 4, cost: 525},
+            {name: 'Protein shake', duration: 5, cost: 750},
+            {name: 'Protein powder', duration: 10, cost: 1500},
+            {name: 'Creatine', duration: 15, cost: 5250},
+            {name: 'Small power potion', duration: 15, cost: 15000},
+            {name: 'Small pump potion', duration: 15, cost: 15000},
+            {name: 'Secret Beans', duration: 10, cost: 18750},
+            {name: 'Angel potion', duration: 20, cost: 75000},
+        ];
+
+        function calculateByTime() {
+            const trainingTime = parseFloat(document.getElementById('trainingTime').value) * 60; // Convert to minutes
+            let results = '<h3>Wyniki dla czasu treningu:</h3><table border="1"><tr><th>Nazwa</th><th>Ilość</th><th>Koszt ($)</th></tr>';
+            let totalCost = 0;
+
+            powerUps.forEach(powerUp => {
+                const quantity = Math.ceil(trainingTime / powerUp.duration);
+                const cost = quantity * powerUp.cost;
+                totalCost += cost;
+
+                results += `<tr><td>${powerUp.name}</td><td>${quantity}</td><td>${cost}</td></tr>`;
+            });
+
+            results += `<tr><td colspan="2">Łączny koszt</td><td>${totalCost}</td></tr></table>`;
+            document.getElementById('timeResults').innerHTML = results;
+        }
+
+        function calculateByMoney() {
+            const budget = parseFloat(document.getElementById('budget').value);
+            let results = '<h3>Wyniki dla dostępnych pieniędzy:</h3><table border="1"><tr><th>Nazwa</th><th>Ilość</th><th>Łączny czas (minuty)</th></tr>';
+            let remainingBudget = budget;
+
+            powerUps.forEach(powerUp => {
+                const quantity = Math.floor(remainingBudget / powerUp.cost);
+                const totalTime = quantity * powerUp.duration;
+                remainingBudget -= quantity * powerUp.cost;
+
+                results += `<tr><td>${powerUp.name}</td><td>${quantity}</td><td>${totalTime}</td></tr>`;
+            });
+
+            results += `<tr><td colspan="2">Pozostały budżet</td><td>${remainingBudget}</td></tr></table>`;
+            document.getElementById('moneyResults').innerHTML = results;
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>
