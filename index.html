@@ -47,80 +47,94 @@
         </tr>
         <tr>
             <td>Chips</td>
-            <td>1 minuta 30 sekund</td>
+            <td>1m 30s</td>
             <td>90</td>
+            <td>Muscle Boost: +25%</td>
         </tr>
         <tr>
             <td>Chicken Wings</td>
-            <td>2 minuty</td>
+            <td>2m</td>
             <td>112</td>
+            <td>Muscle Boost: +35%</td>
         </tr>
         <tr>
             <td>Master Drink</td>
-            <td>2 minuty</td>
+            <td>2m</td>
             <td>127</td>
+            <td>Stamina Regen: +30%<br> Speed Boost: +10%</td>
         </tr>
         <tr>
             <td>Protein bar</td>
-            <td>3 minuty</td>
+            <td>3m</td>
             <td>150</td>
+            <td>Muscle Boost: +35%</td>
         </tr>
         <tr>
             <td>Cheap protein powder</td>
-            <td>5 minut</td>
+            <td>5m</td>
             <td>180</td>
+            <td>Pump: +10%<br> Muscle Boost: +40%<br> Chance: +5%</td>
         </tr>
         <tr>
             <td>Steak</td>
-            <td>4 minuty</td>
+            <td>4m</td>
             <td>210</td>
+            <td>Muscle Boost: +50%</td>
         </tr>
         <tr>
             <td>Rorate</td>
-            <td>4 minuty</td>
+            <td>4m</td>
             <td>525</td>
+            <td>Stamina Regen: +50%<br> Speed Boost: +20%</td>
         </tr>
         <tr>
             <td>Protein shake</td>
-            <td>5 minut</td>
+            <td>5m</td>
             <td>750</td>
+            <td>Muscle Boost: +30%</td>
         </tr>
         <tr>
             <td>Protein powder</td>
-            <td>10 minut</td>
-            <td>1500</td>
+            <td>10m</td>
+            <td>1 500</td>
+            <td>Pump: +20%<br> Muscle Boost: +70%</td>
         </tr>
         <tr>
             <td>Creatine</td>
-            <td>15 minut</td>
-            <td>5250</td>
+            <td>15m</td>
+            <td>5 250</td>
+            <td>Pump: +50%<br> Muscle Boost: +100%</td>
         </tr>
         <tr>
-            <td>Small power potion</td>
-            <td>15 minut</td>
-            <td>15000</td>
+            <td>Small Power Potion</td>
+            <td>15m</td>
+            <td>15 000</td>
+            <td>Muscle Boost: +75%</td>
         </tr>
         <tr>
-            <td>Small pump potion</td>
-            <td>15 minut</td>
-            <td>15000</td>
+            <td>Small Pump Potion</td>
+            <td>15m</td>
+            <td>15 000</td>
+            <td>Pump: +50%</td>
         </tr>
         <tr>
             <td>Secret Beans</td>
-            <td>10 minut</td>
-            <td>18750</td>
+            <td>10m</td>
+            <td>18 750</td>
+            <td>Muscle Boost: +75%<br> Stamina Regen: +75%</td>
         </tr>
         <tr>
             <td>Angel potion</td>
-            <td>20 minut</td>
-            <td>75000</td>
+            <td>20m</td>
+            <td>75 000</td>
+            <td>Speed Boost: +75%</td>
         </tr>
     </table>
-    <h2>Opcja 1: Czas Treningu</h2>
+    <h2>Training Time </h2>
     <form id="timeForm">
-        <label for="trainingTime">Czas treningu (w godzinach): </label>
+        <label for="trainingTime">Training time (in hours): </label>
         <input type="number" id="trainingTime" name="trainingTime" min="1">
-        <button type="button" onclick="calculateByTime()">Oblicz</button>
+        <button type="button" onclick="calculateByTime()">Calculate</button>
     </form>
     <div id="timeResults"></div>
 
@@ -145,7 +159,7 @@
 
         function calculateByTime() {
             const trainingTime = parseFloat(document.getElementById('trainingTime').value) * 60; // Convert to minutes
-            let results = '<h3>Wyniki dla czasu treningu:</h3><table border="1"><tr><th>Nazwa</th><th>Ilość</th><th>Koszt ($)</th></tr>';
+            let results = '<h3>Result for time training:</h3><table border="1"><tr><th>Name</th><th>amount</th><th>Price ($)</th></tr>';
             let totalCost = 0;
 
             powerUps.forEach(powerUp => {
@@ -156,7 +170,7 @@
                 results += `<tr><td>${powerUp.name}</td><td>${quantity}</td><td>${cost}</td></tr>`;
             });
 
-            results += `<tr><td colspan="2">Łączny koszt</td><td>${totalCost}</td></tr></table>`;
+            results += `<tr><td colspan="2">Total price</td><td>${totalCost}</td></tr></table>`;
             document.getElementById('timeResults').innerHTML = results;
         }
     </script>
