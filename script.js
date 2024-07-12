@@ -12,6 +12,7 @@ const powerUps = [
     {name: 'Creatine', duration: 15, cost: 5250},
     {name: 'Small power potion', duration: 15, cost: 15000},
     {name: 'Small pump potion', duration: 15, cost: 15000},
+    {name: 'Small speed potion', duration: 15, cost: 15000},
     {name: 'Secret Beans', duration: 10, cost: 18750},
     {name: 'Angel potion', duration: 20, cost: 75000},
 ];
