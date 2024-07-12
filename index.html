@@ -167,10 +167,10 @@
                 const cost = quantity * powerUp.cost;
                 totalCost += cost;
 
-                results += `<tr><td>${powerUp.name}</td><td>${quantity}</td><td>${cost}</td></tr>`;
+                results += `<tr><td>${powerUp.name}</td><td>${quantity.toLocaleString()}</td><td>${cost.toLocaleString()}</td></tr>`;
             });
 
-            results += `<tr><td colspan="2">Total price</td><td>${totalCost}</td></tr></table>`;
+            results += `<tr><td colspan="2">Łączny koszt</td><td>${totalCost.toLocaleString()}</td></tr></table>`;
             document.getElementById('timeResults').innerHTML = results;
         }
     </script>
